@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Book } from './shared/book'
+import { Component } from '@angular/core'
 
+type ViewState = 'list' | 'details'
 @Component({
-  selector: 'jb-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'jb-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'jango-books';
+    book: Book
+    viewState: ViewState = 'list';
+
+    showList() {
+      this.viewState ="list"
+    }
+    showDetails(book: Book) {
+      this.book = book;
+      this.viewState = "details";
+    }
 }
